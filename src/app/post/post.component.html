@@ -1,0 +1,9 @@
+<h2>{{ post?.title }}</h2>
+<p>
+  {{ post?.description }}
+</p>
+<img src="{{ post?.imagePath }}" class="img-responsive" />
+<p>Auther: {{ post?.author }}</p>
+<p>Date: {{ post?.datetimeCreated }}</p>
+<button>Edit</button> | <button (click)="onDelete()">Delete</button>
+<hr />
