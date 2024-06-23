@@ -1,24 +1,26 @@
 <div class="row">
     <div class="col-md-6">
-        <h2>Add Post</h2>
-        <form>
-            <div class="form-group">
+        <h2 *ngIf="editMode===false">Add Post</h2>
+        <h2 *ngIf="editMode===true">Edit Post</h2>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-group" >
                 <label for="title">Title</label>
-                <input type="text" class="form-control" id="title" placeholder="Title">
+                <input type="text" class="form-control" formControlName="title" id="title" placeholder="Title">
             </div>
             <div class="form-group">
                 <label for="description">Description</label>
-                <textarea type="text" class="form-control" id="description" placeholder="Description"></textarea>
+                <textarea type="text" class="form-control" formControlName="description" id="description" placeholder="Description"></textarea>
             </div>
             <div class="form-group">
                 <label for="imagePath">Image Path</label>
-                <input type="text" class="form-control" id="imagePath" placeholder="Image Path">
+                <input type="text" class="form-control" id="imagePath" placeholder="Image Path" formControlName="imagePath"/>
+                <img class="img-responsive" src="{{ form.value.imagePath }}">
             </div>
             <div class="form-group">
                 <label for="author">Author</label>
-                <input type="text" class="form-control" id="author" placeholder="Author">
+                <input type="text" class="form-control" formControlName="author" id="author" placeholder="Author">
             </div>
-            <button class="btn btn-success" type="submit">Save</button> |
+            <button class="btn btn-success" type="submit" [disabled]="form.invalid">Save</button> |
             <button class="btn btn-primary" type="reset">Clear</button>
         </form>
     </div>

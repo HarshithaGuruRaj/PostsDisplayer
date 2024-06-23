@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { PostListComponent } from './post-list/post-list.component';
@@ -24,7 +24,7 @@ const routes : Routes = [
     component: AuthComponent
   },
   {
-    path: 'post-edit',
+    path: 'post-edit/:index',
     component: PostEditComponent
   },
   {
@@ -43,7 +43,8 @@ const routes : Routes = [
   ],
   imports: [
     BrowserModule, 
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
